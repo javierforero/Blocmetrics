@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+.sign_up  {
+  padding-top: 15px;
+  padding-right: 10px;
+  letter-spacing: 1px;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  text-align: center;
+}
