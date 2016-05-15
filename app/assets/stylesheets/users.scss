@@ -1,0 +1,13 @@
+.table {
+  margin: 0 auto;
+  min-width: 300px;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+}
+
+.glyphicon {
+  color: red;
+  opacity: .5;
+}

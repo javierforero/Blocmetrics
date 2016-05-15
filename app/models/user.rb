@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
 
   validates :name, length: {minimum: 1, maximum: 100}, presence: true
 
-  has_many :registered_apps
+  has_many :registered_apps, dependent: :destroy
 end

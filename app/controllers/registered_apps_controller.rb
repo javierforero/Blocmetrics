@@ -1,16 +1,17 @@
 class RegisteredAppsController < ApplicationController
-  def index
-  end
 
   def show
+    @registered_app = RegisteredApp.find(params[:id])
   end
 
   def new
     @user = User.find(params[:user_id])
-    @registered_app = RegisteredApp .new
+    @registered_app = RegisteredApp.new
   end
 
   def create
+
+    @user = User.find(params[:user_id])
     @registered_app = RegisteredApp.new
     @registered_app.name = params[:registered_app][:name]
     @registered_app.url = params[:registered_app][:url]
@@ -20,7 +21,7 @@ class RegisteredAppsController < ApplicationController
       flash[:notice] = "Your app was registered!"
       redirect_to user_path(@user)
     else
-      flash[:alert] = "There was a problem registering you app. Try again."
+      flash[:alert] = "There was a problem registering you app. Please make you that you give it a name and a url and try again."
       render :new
     end
   end
@@ -29,5 +30,18 @@ class RegisteredAppsController < ApplicationController
   end
 
   def destroy
+
+    @user = User.find(params[:user_id])
+    @registered_app = @user.registered_apps.find(params[:id])
+
+    if @registered_app.destroy
+      flash[:notice] = "#{@registered_app.name} was unregistered successfully."
+    else
+      flash[:alert] = "Sorry. We were unable to unregister #{@registered_app.name}"
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end
