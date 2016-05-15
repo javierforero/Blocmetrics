@@ -11,4 +11,10 @@ RSpec.describe RegisteredAppsController, type: :controller do
     end
   end
 
+  describe "creates a registered_app" do
+    it "increases registered_app record count by 1" do
+      expect{post :create, user_id: my_user.id, registered_app: {name: "app", url: "we.com", user_id: my_user.id }}.to change(RegisteredApp, :count).by(1)
+    end
+  end
+
 end

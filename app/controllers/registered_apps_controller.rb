@@ -35,9 +35,9 @@ class RegisteredAppsController < ApplicationController
     @registered_app = @user.registered_apps.find(params[:id])
 
     if @registered_app.destroy
-      flash[:notice] = "#{@registered_app.name} was unregistered successfully."
+      flash.now[:notice] = "#{@registered_app.name} was unregistered successfully."
     else
-      flash[:alert] = "Sorry. We were unable to unregister #{@registered_app.name}"
+      flash.now[:alert] = "Sorry. We were unable to unregister #{@registered_app.name}"
     end
     respond_to do |format|
       format.html
