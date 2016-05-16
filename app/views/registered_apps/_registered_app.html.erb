@@ -1,0 +1,8 @@
+<tr class=<%="app-#{registered_app.id}"%>>
+  <td>
+    <%= link_to registered_app.name, user_registered_app_path(registered_app.user_id, registered_app)%>
+  </td>
+  <td>
+    <%= link_to "",[registered_app.user, registered_app], method: :delete, remote:  true, class: 'glyphicon glyphicon-remove' %>
+  </td>
+</tr>
