@@ -12,9 +12,7 @@ class RegisteredAppsController < ApplicationController
   def create
 
     @user = User.find(params[:user_id])
-    @registered_app = RegisteredApp.new
-    @registered_app.name = params[:registered_app][:name]
-    @registered_app.url = params[:registered_app][:url]
+    @registered_app = RegisteredApp.new(app_params)
     @registered_app.user_id = @user.id
 
     if @registered_app.save
@@ -24,9 +22,6 @@ class RegisteredAppsController < ApplicationController
       flash[:alert] = "There was a problem registering you app. Please make you that you give it a name and a url and try again."
       render :new
     end
-  end
-
-  def edit
   end
 
   def destroy
@@ -43,5 +38,11 @@ class RegisteredAppsController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  private
+
+  def app_params
+    params.require(:registered_app).permit(:name, :url, :user_id)
   end
 end
