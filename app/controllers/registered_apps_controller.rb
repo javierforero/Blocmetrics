@@ -24,6 +24,20 @@ class RegisteredAppsController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:user_id])
+    @registered_app =  @user.registered_apps.find(params[:id])
+
+    if @registered_app.update(app_params)
+      # fix
+      render nothing: true
+    else
+      # fix
+      render nothing: true, status: 422
+    end
+
+  end
+
   def destroy
 
     @user = User.find(params[:user_id])
@@ -43,6 +57,6 @@ class RegisteredAppsController < ApplicationController
   private
 
   def app_params
-    params.require(:registered_app).permit(:name, :url, :user_id)
+    params.require(:registered_app).permit(:name, :url, :user_id, :enable)
   end
 end

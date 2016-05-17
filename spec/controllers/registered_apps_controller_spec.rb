@@ -17,4 +17,20 @@ RSpec.describe RegisteredAppsController, type: :controller do
     end
   end
 
+  describe '#update' do
+    context 'disabling with AJAX' do
+
+      before { post :update, id: my_app.id, user_id: my_user.id, registered_app: { enable: false }, format: :js }
+
+      it 'disables the registered applicaiton' do
+        expect(my_app.reload.enable).to eq(false)
+      end
+
+      it 'respond with something interesting' do
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+  end
+
 end
