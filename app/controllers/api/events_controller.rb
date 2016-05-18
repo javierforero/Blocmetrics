@@ -31,7 +31,7 @@ class API::EventsController < ApplicationController
 
     headers['Access-Control-Allow-Headers'] = 'Content-Type'
   end
-  
+
   private
 
   def event_params
