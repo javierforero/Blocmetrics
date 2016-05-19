@@ -11,14 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512182542) do
+ActiveRecord::Schema.define(version: 20160517202327) do
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "registered_app_id"
+    t.string   "name"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "events", ["registered_app_id"], name: "index_events_on_registered_app_id"
 
   create_table "registered_apps", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "enable",     default: true
   end
 
   add_index "registered_apps", ["user_id"], name: "index_registered_apps_on_user_id"

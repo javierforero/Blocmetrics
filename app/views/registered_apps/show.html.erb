@@ -1,3 +1,15 @@
 <div class="cointainer">
-  <h2><%=@registered_app.name%>: <%=@registered_app.url%></h2>
+  <h2><%=@registered_app.name %></h2>
+  <table style="width: 10%" class="table table-bordered">
+    <tr>
+      <th>Event Name</th>
+      <th>Occurance</th>
+    </tr>
+    <% @events.each do |event, event_occurence|%>
+      <tr>
+        <td><%= event %></td>
+        <td><%= event_occurence.count %></td>
+      </tr>
+    <% end %>
+ </table>
 </div>
