@@ -5,8 +5,8 @@ class API::EventsController < ApplicationController
 
   def create
 
-    registered_app = RegisteredApp.find_by(url: request.ENV['HTTP_ORIGIN'])
-    @event = Event.new(event_params)
+    @registered_app = RegisteredApp.find_by(url: request.env['HTTP_ORIGIN'])
+    @event = @registered_app.events.create!(event_params)
 
     if registered_app == nil
 
