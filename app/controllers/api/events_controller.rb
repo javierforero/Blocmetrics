@@ -9,11 +9,10 @@ class API::EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.registered_app_id = @registered_app.id
 
-    if @registered_app == nil
+    if @registered_app.nil?
 
       render json: "Sorry. This is an unregistered application", status: :unprocessable_entity
-    elsif @event.valid?
-      @event.save!
+    elsif @event.save
       render json: @event, status: 200
     else
       render json: {error: "There was an error sending your request", status: 400}, status: 400
