@@ -7,7 +7,7 @@ class API::EventsController < ApplicationController
 
     @registered_app = RegisteredApp.find_by(url: request.env['HTTP_ORIGIN'])
     @event = Event.new(event_params)
-    @event.registered_app_id = @registered_app.id
+    @event.registered_app = @registered_app
 
     if @registered_app.nil?
 

@@ -27,8 +27,8 @@ RSpec.describe API::EventsController, type: :controller do
       post :create, event: {name: "testing rspec"}
     end
 
-    it "fails" do
-      expect(response).to have_http_status(400)
+    it "return a status of unprocessable_entity" do
+      expect(response).to have_http_status(:unprocessable_entity)
     end
 
   end
