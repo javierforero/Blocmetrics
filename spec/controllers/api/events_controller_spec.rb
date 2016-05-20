@@ -20,4 +20,16 @@ RSpec.describe API::EventsController, type: :controller do
       end
     end
   end
+
+  context "unregistered app fails" do
+    before do
+      @request.env['HTTP_ORIGIN'] = "blah.com"
+      post :create, event: {name: "testing rspec"}
+    end
+
+    it "fails" do
+      expect(response).to have_http_status(400)
+    end
+
+  end
 end

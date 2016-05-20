@@ -15,7 +15,7 @@ class API::EventsController < ApplicationController
     elsif @event.save
       render json: @event, status: 200
     else
-      render json: {error: "There was an error sending your request", status: 400}, status: 400
+      render json: {error: @event.errors.full_messages, status: 400}, status: 400
     end
   end
 
