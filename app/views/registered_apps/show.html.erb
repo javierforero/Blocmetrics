@@ -1,8 +1,6 @@
 <%= javascript_include_tag "https://www.google.com/jsapi" %>
 <div class="cointainer">
   <h2><%=@registered_app.name %></h2>
-  <table style="width: 10%" class="table table-bordered">
-    <%= pie_chart @registered_app.events.group(:name).count %>
-    <%= line_chart @registered_app.events.group_by_day(:created_at).count %>
- </table>
+  <%= pie_chart @registered_app.events.group(:name).count %>
+  <%= line_chart @registered_app.events.group_by_day(:created_at).count %>
 </div>
