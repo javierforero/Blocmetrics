@@ -17,4 +17,5 @@
 //= require chartkick
 //= require highcharts
 //= require Chart.bundle
+//= require groupdate
 //= require_tree .
