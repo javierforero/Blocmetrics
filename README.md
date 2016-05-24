@@ -6,7 +6,7 @@ This website offers some key features:
 2. A server-side API that captures and saves those events to a database.
 3. A Rails application that displays the captured event data for a user.
 
-In order to track you app, please add the following code to your application.js file:
+In order to track you app, please add the following code to your application.js file and implement ```blocmetrics("eventName");``` wherever you need to track:
 
 ```js
 var blocmetrics = {};
