@@ -1,5 +1,5 @@
 
-Blocmetrics is a web analytics tracking service.
+Metrics is a web analytics tracking service.
 
 This website offers some key features:
 1. A client-side JavaScript snippet that allows a user to track events on their website.
@@ -24,9 +24,9 @@ Tracking Apps
 In order to track your app, please add the following code to your application.js file and implement ```blocmetrics("eventName");``` wherever you need to track:
 
 ```js
-var blocmetrics = {};
+var metrics = {};
 
-blocmetrics.report = function(eventName) {
+ metrics.report = function(eventName) {
   var event = { event: { name: eventName, url:"url of site" } };
   var request = new XMLHttpRequest();
 
